@@ -1,32 +1,46 @@
 import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import Avatar from '@material-ui/core/Avatar';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import Drawer from '@material-ui/core/Drawer';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 import mainLogo from './assets/upliftlogo_white.png';
-import twitterLogo from './assets/twitterlogo.png';
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   root: {flexGrow: 1},
   appBar: {
-    zIndex: 2000,
+    opacity: 0.9,
+    //zIndex: 2000,
   },
   mainLogo: {
     width: 'auto',
     height: '36px',
   },
   void: {flexGrow: 1},
-  button: {
-    color: '#E8E8E8',
+  menuRoot:{
+    width: '240px',
+    height: '100%',
+    backgroundColor: '#000000',
   },
-  dialogRoot: {
-    width: '100vw',
-    minHeight: '100vh',
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-start',
+  },
+  aboutUsRoot: {
+    backgroundColor: '#E8E8E8',
   },
   title: {
     margin: '16px 0 0 16px',
@@ -52,52 +66,51 @@ const useStyles = makeStyles(theme => ({
     padding: '8px 0',
   },
   avater: {
-    padding: '8px 0',
+    width: '48px',
+    height: '48px',
   },
 }));
 
 const Header = ()=>{
   const classes = useStyles();
-  const [aboutUs,setAboutUs] = useState(false);
+  const [menu, setMenu] = useState(false);
 
   return(
     <div className={classes.root}>
       <AppBar elevation={1} className={classes.appBar}>
         <Toolbar>
-          <img alt="mainLogo" src={mainLogo} className={classes.mainLogo} onClick={()=>{setAboutUs(false)}}/>
+          <Link to="/" style={{ textDecoration: 'none' }}>
+            <Button><img alt="mainLogo" src={mainLogo} className={classes.mainLogo}/></Button>
+          </Link>
           <div className={classes.void}/>
-          <Button className={classes.button} onClick={()=>{setAboutUs(true)}}>About Us</Button>
-          <Button className={classes.button} href="https://docs.google.com/forms/d/e/1FAIpQLSdp9IGlmr40sKBNglhP4l4miEhvObej8xiZ1wNPQXhB7wfaEQ/viewform">
-            お問い合わせ
-          </Button>
+          <IconButton color='secondary' onClick={()=>{setMenu(true)}}>
+            <MenuIcon/>
+          </IconButton>
         </Toolbar>
       </AppBar>
-      <Dialog fullScreen open={aboutUs} className={classes.dialogRoot}>
-        <div className={classes.toolbar}/>
-        <Typography variant='h5' className={classes.title}>ABOUT US</Typography>
-        <div className={classes.memberCard}>
-          <Avatar className={classes.photoAvater}>TK</Avatar>
-          <Typography className={classes.positionText}>FOUNDER</Typography>
-          <Typography variant='h6' className={classes.nameText}>TAKANORI KAI</Typography>
-          <Typography className={classes.description}>
-            東京大学工学部。幼少期を米国ジョージア州で過ごし、中学から日本に帰国。英語を得意とし、当時県内史上最年少で英検一級合格、高校3年次に全日本青少年英語弁論大会優勝。大学ではアメフト部に所属、４年次に国立大学初の関東最上位リーグ昇格を果たす。
-            <br/><br/>
-            フィットネスを通して人生が明るくなる・自分に自信を持てるようになる、という経験がきっかけとなり、それを多くの人々に広めたいという想いでThe UPLIFT Appを個人で開発。
-          </Typography>
-          <Avatar alt="twitterLogo" src={twitterLogo} className={classes.avater}/>
+      <Drawer anchor="right" open={menu} onClose={()=>{setMenu(false)}}>
+        <div className={classes.menuRoot}>
+          <div className={classes.drawerHeader}>
+            <IconButton color='secondary' onClick={()=>{setMenu(false)}}>
+              <ChevronRightIcon/>
+            </IconButton>
+          </div>
+          <List>
+            <Link to="/AboutUs" style={{ textDecoration: 'none' }}>
+              <ListItem button onClick={()=>{setMenu(false)}}>
+                <ListItemText>
+                  <Typography color="secondary" variant="h6">ABOUT US</Typography>
+                </ListItemText>
+              </ListItem>
+            </Link>
+            <ListItem button component="a" href="https://docs.google.com/forms/d/e/1FAIpQLSdp9IGlmr40sKBNglhP4l4miEhvObej8xiZ1wNPQXhB7wfaEQ/viewform">
+              <ListItemText>
+                <Typography color="secondary" variant="h6">CONTACT</Typography>
+              </ListItemText>
+            </ListItem>
+          </List>
         </div>
-        <div className={classes.memberCard}>
-          <Avatar className={classes.photoAvater}>TK</Avatar>
-          <Typography className={classes.positionText}>FOUNDER</Typography>
-          <Typography variant='h6' className={classes.nameText}>TAKANORI KAI</Typography>
-          <Typography className={classes.description}>
-            東京大学工学部。幼少期を米国ジョージア州で過ごし、中学から日本に帰国。英語を得意とし、当時県内史上最年少で英検一級合格、高校3年次に全日本青少年英語弁論大会優勝。大学ではアメフト部に所属、４年次に国立大学初の関東最上位リーグ昇格を果たす。
-            <br/><br/>
-            フィットネスを通して人生が明るくなる・自分に自信を持てるようになる、という経験がきっかけとなり、それを多くの人々に広めたいという想いでThe UPLIFT Appを個人で開発。
-          </Typography>
-          <Avatar alt="twitterLogo" src={twitterLogo} className={classes.avater}/>
-        </div>
-      </Dialog>
+      </Drawer>
     </div>
   )
 };

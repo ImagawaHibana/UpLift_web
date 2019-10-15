@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import Avatar from '@material-ui/core/Avatar';
 
 import mainImg from './assets/lpmain.png';
 import ssHome from './assets/screenshot_home.png';
@@ -78,6 +77,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    backgroundColor: '#E8E8E8',
     padding: '24px 0',
   },
   area3: {
@@ -111,7 +111,7 @@ const useStyles = makeStyles(theme => ({
     padding: '24px 0',
   },
   contact:{
-    width: '240px',
+    width: '320px',
   },
   textField: {
     backgroundColor: '#E8E8E8'
@@ -125,7 +125,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
   },
   avater: {
-    padding: '16px',
+    width: '48px',
+    height: '48px',
   },
   areaText: {
     padding: '8px 32px',
@@ -135,7 +136,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Main = ()=>{
+const Top = ()=>{
   const classes = useStyles();
 
   return(
@@ -237,8 +238,8 @@ const Main = ()=>{
           <p/>
           <Typography align='center' color='secondary'>FOLLOW US</Typography>
           <div className={classes.followUs}>
-            <Avatar alt="twitterLogo" src={twitterLogo} className={classes.avater}/>
-            <Avatar alt="instaLogo" src={instaLogo} className={classes.avater}/>
+            <Button><img alt="twitterLogo" src={twitterLogo} className={classes.avater}/></Button>
+            <Button><img alt="instaLogo" src={instaLogo} className={classes.avater}/></Button>
           </div>
         </div>
       </div>
@@ -246,4 +247,4 @@ const Main = ()=>{
   )
 };
 
-export default Main;
+export default Top;

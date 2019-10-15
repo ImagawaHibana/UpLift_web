@@ -1,13 +1,15 @@
 import React from 'react';
 import Header from './Header';
-import Main from './Main';
+import Top from './Top';
+import AboutUs from './AboutUs';
 import { createMuiTheme  } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
+import { BrowserRouter as Router, Route} from "react-router-dom";
 
 let theme = createMuiTheme({
   palette: {
     primary: {main: '#000000',},
-    secondary: {main: '#E8E8E8',},
+    secondary: {main: '#EBEBEB',},
     contrastThreshold: 3,
     tonalOffset: 0.2,
   },
@@ -16,13 +18,16 @@ let theme = createMuiTheme({
   },
 });
 
-function App() {
+const App = ()=>{
   return (
-    <ThemeProvider theme={theme}>
-      <Header/>
-      <Main />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+          <Header/>
+          <Route exact path='/' component={Top}/>
+          <Route exact path='/AboutUs' component={AboutUs}/>
+      </ThemeProvider>
+    </Router>
   );
-}
+};
 
 export default App;
