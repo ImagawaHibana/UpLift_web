@@ -12,6 +12,7 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import Hidden from '@material-ui/core/Hidden';
 
 import mainLogo from './assets/upliftlogo_white.png';
 
@@ -83,9 +84,19 @@ const Header = ()=>{
             <Button><img alt="mainLogo" src={mainLogo} className={classes.mainLogo}/></Button>
           </Link>
           <div className={classes.void}/>
-          <IconButton color='secondary' onClick={()=>{setMenu(true)}}>
-            <MenuIcon/>
-          </IconButton>
+          <Hidden smUp>
+            <IconButton color='secondary' onClick={()=>{setMenu(true)}}>
+              <MenuIcon/>
+            </IconButton>
+          </Hidden>
+          <Hidden xsDown>
+            <Link to="/about_us" style={{ textDecoration: 'none' }}>
+              <Button><Typography color="secondary">ABOUT US</Typography></Button>
+            </Link>
+            <Button component="a" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSdp9IGlmr40sKBNglhP4l4miEhvObej8xiZ1wNPQXhB7wfaEQ/viewform">
+              <Typography color="secondary">CONTACT</Typography>
+            </Button>
+          </Hidden>
         </Toolbar>
       </AppBar>
       <Drawer anchor="right" open={menu} onClose={()=>{setMenu(false)}}>
@@ -96,14 +107,14 @@ const Header = ()=>{
             </IconButton>
           </div>
           <List>
-            <Link to="/AboutUs" style={{ textDecoration: 'none' }}>
+            <Link to="/about_us" style={{ textDecoration: 'none' }}>
               <ListItem button onClick={()=>{setMenu(false)}}>
                 <ListItemText>
                   <Typography color="secondary" variant="h6">ABOUT US</Typography>
                 </ListItemText>
               </ListItem>
             </Link>
-            <ListItem button component="a" href="https://docs.google.com/forms/d/e/1FAIpQLSdp9IGlmr40sKBNglhP4l4miEhvObej8xiZ1wNPQXhB7wfaEQ/viewform">
+            <ListItem button onClick={()=>{setMenu(false)}} component="a" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSdp9IGlmr40sKBNglhP4l4miEhvObej8xiZ1wNPQXhB7wfaEQ/viewform">
               <ListItemText>
                 <Typography color="secondary" variant="h6">CONTACT</Typography>
               </ListItemText>

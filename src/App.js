@@ -24,7 +24,7 @@ const App = ()=>{
       <ThemeProvider theme={theme}>
           <Header/>
           <Route exact path='/' component={Top}/>
-          <Route exact path='/AboutUs' component={AboutUs}/>
+          <Route exact path='/about_us' component={AboutUs}/>
       </ThemeProvider>
     </Router>
   );

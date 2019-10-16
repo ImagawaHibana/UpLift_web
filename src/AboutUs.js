@@ -9,16 +9,25 @@ import twitterLogo from './assets/twitterlogo.png';
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   root: {
+    width: '100vw',
+    minHeight: '100vh',
     backgroundColor: '#E8E8E8',
   },
   title: {
-    margin: '16px 0 0 16px',
+    [theme.breakpoints.down('xs')]: {
+      margin: '16px 0 0 16px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      margin: '40px 0 0 40px',
+    },
   },
   memberCard: {
+    maxWidth: '480px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '16px 40px'
+    margin: '0 auto',
+    padding: '16px 40px',
   },
   photoAvater: {
     width: '184px',
