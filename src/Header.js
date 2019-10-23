@@ -91,10 +91,10 @@ const Header = ()=>{
           </Hidden>
           <Hidden xsDown>
             <Link to="/about_us" style={{ textDecoration: 'none' }}>
-              <Button><Typography color="secondary">ABOUT US</Typography></Button>
+              <Button><Typography color="secondary" variant="body2">ABOUT US</Typography></Button>
             </Link>
             <Button component="a" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSdp9IGlmr40sKBNglhP4l4miEhvObej8xiZ1wNPQXhB7wfaEQ/viewform">
-              <Typography color="secondary">CONTACT</Typography>
+              <Typography color="secondary" variant="body2">お問い合わせ</Typography>
             </Button>
           </Hidden>
         </Toolbar>
@@ -116,7 +116,7 @@ const Header = ()=>{
             </Link>
             <ListItem button onClick={()=>{setMenu(false)}} component="a" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSdp9IGlmr40sKBNglhP4l4miEhvObej8xiZ1wNPQXhB7wfaEQ/viewform">
               <ListItemText>
-                <Typography color="secondary" variant="h6">CONTACT</Typography>
+                <Typography color="secondary" variant="h6">お問い合わせ</Typography>
               </ListItemText>
             </ListItem>
           </List>

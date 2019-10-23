@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: '#E8E8E8',
   },
   title: {
+    fontWeight: 900,
     [theme.breakpoints.down('xs')]: {
       margin: '16px 0 0 16px',
     },
@@ -22,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   memberCard: {
-    maxWidth: '480px',
+    maxWidth: '520px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -32,16 +33,22 @@ const useStyles = makeStyles(theme => ({
   photoAvater: {
     width: '184px',
     height: '184px',
-    margin: '8px',
+    margin: '16px',
   },
   positionText: {
 
   },
   nameText: {
-    padding: '8px 0',
+
   },
   description: {
-    padding: '8px 0',
+    padding: '16px 0 8px 0',
+    [theme.breakpoints.down('xs')]: {
+      fontSize: '15px',
+    },
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '16px',
+    }
   },
   avater: {
     width: '48px',
